@@ -67,7 +67,7 @@ class TestEmployee implements ICompanyEmplopyeeWage
 			totalWage = totalWage + wage;
 		}
 		System.out.println("monthly wage = "+totalWage);
-		return totalWage;
+		return  totalWage;
 	}
 }
 
