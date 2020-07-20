@@ -1,6 +1,12 @@
-public class EmployeeWage {
+interface ICompanyEmplopyeeWage
+{
+        void addCompanyEmpWage(String company_name, int wage_per_hour, int total_working_days, int total_working_hour);
+        void computeWage();
+        int computeWage(CompanyEmployeeWage CompanyEmpWage);
+}
 
-   		public static byte FULL_DAY_HOUR = 8;
+public class EmployeeWage {
+		public static byte FULL_DAY_HOUR = 8;
 		public static byte HALF_DAY_HOUR = 4;
 		
 		public int totalWage = 0;
