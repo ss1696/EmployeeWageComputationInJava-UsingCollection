@@ -3,11 +3,11 @@ public class CompanyEmployeeWage
 
 	public final int wage_per_hour;
 	public final int total_working_days;
- 	public final int total_working_hour;
+    public final int total_working_hour;
 	public final String company_name;
 	public	int totalWage = 0;
 
-	public CompanyEmpWage(String company_name, int wage_per_hour, int total_working_days, int total_working_hour)
+	public CompanyEmployeeWage(String company_name, int wage_per_hour, int total_working_days, int total_working_hour)
 	{
 		this.company_name = company_name;
 		this.wage_per_hour = wage_per_hour;
