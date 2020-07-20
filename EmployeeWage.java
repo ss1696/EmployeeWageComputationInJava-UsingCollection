@@ -1,37 +1,42 @@
-import java.util.ArrayList;
-import java.util.Iterator;
 
-interface ICompanyEmplopyeeWage
+interface ICompanyEmpWage
 {
-        void addCompanyEmployeeWage(String company_name, int wage_per_hour, int total_working_days, int total_working_hour);
+        void addCompanyEmpWage(String company_name, int wage_per_hour, int total_working_days, int total_working_hour);
         void computeWage();
-        int computeWage(CompanyEmployeeWage CompanyEmployeeWage);
+        int computeWage(CompanyEmployeeWage CompanyEmpWage);
 }
 
-class TestEmployee implements ICompanyEmplopyeeWage
+
+class Compare implements ICompanyEmpWage
 {
 	public static byte FULL_DAY_HOUR = 8;
     public static byte HALF_DAY_HOUR = 4;
 
 	public int totalWage = 0;
+	public int numOfCompany = 0;
 
-	CompanyEmployeeWage comEmp = new CompanyEmployeeWage(company_name, wage_per_hour, total_working_days, total_working_hour);
+	public CompanyEmployeeWage[] comEmpArray = new CompanyEmployeeWage[5];
 
-	public ArrayList<CompanyEmployeeWage> comEmpArray = new ArrayList<CompanyEmployeeWage>();
-
-	public void addCompanyEmployeeWage(String company_name, int wage_per_hour, int total_working_days, int total_working_hour)
+	public void addCompanyEmpWage(String company_name, int wage_per_hour, int total_working_days, int total_working_hour)
 	{
-		comEmpArray.add(CompanyEmployeeWage(comEmp));
-	}
 
-	
+		comEmpArray[numOfCompany] = new CompanyEmployeeWage(company_name, wage_per_hour, total_working_days, total_working_hour);
+
+		comEmpArray[numOfCompany] = new CompanyEmployeeWage(company_name, wage_per_hour, total_working_days, total_working_hour);
+
+		comEmpArray[numOfCompany] = new CompanyEmployeeWage(company_name, wage_per_hour, total_working_days, total_working_hour);
+
+		comEmpArray[numOfCompany] = new CompanyEmployeeWage(company_name, wage_per_hour, total_working_days, total_working_hour);
+		
+		numOfCompany++;
+	}
 
 	public void computeWage()
         {
-		Iterator<CompanyEmployeeWage> it = comEmpArray.iterator();
-		while(it.hasNext())
+		for(int i=0; i<numOfCompany; i++)
 		{
-			CompanyEmployeeWage ce = it.next();
+			comEmpArray[i].setTotalWage(this.computeWage(comEmpArray[i]));
+			System.out.println(comEmpArray[i]);
 		}
 	}
 
@@ -67,18 +72,20 @@ class TestEmployee implements ICompanyEmplopyeeWage
 			totalWage = totalWage + wage;
 		}
 		System.out.println("monthly wage = "+totalWage);
-		return  totalWage;
+		return totalWage;
 	}
 }
 
 public class EmployeeWage
 {
-	public static void main(String[] args)
-	{
-		TestEmployee t = new TestEmployee();
 
-		t.addCompanyEmployeeWage("DMart",20,2,10);
-		t.addCompanyEmployeeWage("tcs",25,20,20);
+	public static void main(String[] args){
+		
+		Compare t = new Compare();
+
+		//EmpWageBuilderUC empWage = new EmpWageBuilderUC();
+		t.addCompanyEmpWage("DMart",20,2,10);
+		t.addCompanyEmpWage("tcs",25,20,20);
 		t.computeWage();
 	}
 }
