@@ -4,27 +4,30 @@ public class EmployeeWage {
 	{
 		System.out.println("calculate employee wage");
 		//constants
-		int wagePerHour = 20;
-                int fullDayHour = 1;
-                int empWage = 0;
-		int empWageHalfDay = 0;
 		int is_present = 1;
+		int empWage = 0;
+		int wagePerHour = 20;
+                byte fullDayHour = 8;
+                byte halfDayHour = 4;
+                int empWageFullfDay = 0;
+                int empWageHalfDay = 0;
+
 		//Computation
 		double empCheck = Math.floor(Math.random() * 10) % 3;
-		if (empCheck == 1)
-		{
-			empWage = wagePerHour * 8;
-                        System.out.println("employee wage = "+empWage);
-			System.out.println("present full time");
-		}
-		else if (empCheck == 2)
-		{
-			empWageHalfDay = wagePerHour * 4;
-                	System.out.println("employee wage = "+empWageHalfDay);
-		}
-		else
-		{
-			System.out.println("employee is absent ");
+		int empCheckFullPartAbsent = (int) empCheck;
+		switch(empCheckFullPartAbsent)
+               	{
+	               	case 0:
+        	               	empWageHalfDay = wagePerHour * halfDayHour;
+                        	System.out.println("employee wage = "+empWageHalfDay);
+                        	break;
+               		case 1:
+                        	empWageFullfDay = wagePerHour * fullDayHour;
+                        	System.out.println("employee wage = "+empWageFullfDay);
+                        	break;
+                	default:
+                        	System.out.println("employee is absent");
+                        	break;
 		}
 	}
 
