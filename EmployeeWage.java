@@ -1,52 +1,66 @@
 public class EmployeeWage {
 
-	public static final int WAGE_PER_HOUR = 20;
-    public static final byte FULL_DAY_HOUR = 8;
-    public static final byte HALF_DAY_HOUR = 4;
-    public static final int TOTAL_WORKING_DAYS = 20;
-    public static final int TOTAL_WORKING_HOURS = 100;
+     public static byte FULL_DAY_HOUR = 8;
+     public static byte HALF_DAY_HOUR = 4;
 
-public static void main(String[] agrs)
-{
-	System.out.println("calculate employee wage");
-	//constants
-	int empWage = 0;
-	int empWageFullDay = 0;
-            int empWageHalfDay = 0;
-            int totalWorkingDays = 0;
-            int totalWorkingHour = 0;
-            int totalWage = 0;
-            int wage = 0;
-	int is_present = 1;
-	int workingHour = 0;
-	//Computation
-	while(totalWorkingDays <= TOTAL_WORKING_DAYS && totalWorkingHour <= TOTAL_WORKING_HOURS)
-	{
-		int empCheck = (int)Math.floor(Math.random() * 10) % 3;
-			switch(empCheck)
-	            		{
-	            		case 0:
-	                    		empWageHalfDay = WAGE_PER_HOUR * HALF_DAY_HOUR;
-	                    		wage = wage + empWageHalfDay;
-	                    		System.out.println("employee half day Wage ="+wage);
-	                    		workingHour = HALF_DAY_HOUR;
-	                    		break;
-	           			case 1:
-	                    		empWageFullDay = WAGE_PER_HOUR * FULL_DAY_HOUR;
-	                    		wage = wage + empWageFullDay;
-	                    		System.out.println("employee full day Wage ="+wage);
-	                    		workingHour = FULL_DAY_HOUR;
-	                    		break;
-	            		default:
-	                    		System.out.println("employee wage = 0");
-	                    		break;
-			}
-		totalWorkingHour = totalWorkingHour + workingHour;
-		totalWorkingDays++;
-		totalWage = totalWage + wage;
-	}
-	System.out.println("monthly wage = "+totalWage);
-}
+     public static int ComputeWage(String company_name, int wage_per_hour, int total_working_days, int total_working_hour)
+     {
+             int empWageFullDay = 0;
+             int empWageHalfDay = 0;
+             int totalWorkingDays = 0;
+             int workingHour = 0;
+             int totalWage = 0;
+             int wage = 0;
 
+
+             while(workingHour <= total_working_hour && totalWorkingDays <= total_working_days)
+    	        {
+            	        if(EmpAttendance()==1)
+                    	{
+                    	        int part_full_time = EmpTime();
+                    	        switch(part_full_time)
+                            	{
+                                    	case 0:
+                                            	empWageHalfDay = wage_per_hour * HALF_DAY_HOUR;
+                                            	wage = wage + empWageHalfDay;
+                                            	workingHour = workingHour + HALF_DAY_HOUR;
+                                            	break;
+                                    	case 1:
+                                    	        empWageFullDay = wage_per_hour * FULL_DAY_HOUR;
+                                    	        wage = wage + empWageFullDay;
+                                   	        workingHour = workingHour + FULL_DAY_HOUR;
+                                    	        break;
+                                    	default:
+                                    	        System.out.println("employee wage = 0");
+                                    	        break;
+                            	}
+                    	}
+                    	totalWorkingDays++;
+                   	totalWage = totalWage + wage;
+            	}
+             	System.out.println("for company "+company_name+"monthly wage = "+totalWage);
+
+	return totalWage;
+    }
+
+     public static int EmpAttendance()
+     {
+             double ckeckAttend = Math.floor(Math.random() * 10) % 2;
+             int attendance = (int) ckeckAttend;
+             return(attendance);
+     }
+
+     public static int EmpTime()
+     {
+             double checkHours = Math.floor(Math.random() * 10) % 2;
+             int workingHours = (int) checkHours;
+             return(workingHours);
+     }
+
+     public static void main(String[] args)
+     {
+             ComputeWage("Dmart", 25,30,10);
+             ComputeWage("TCS",30,20,8);
+     }
 
 }
