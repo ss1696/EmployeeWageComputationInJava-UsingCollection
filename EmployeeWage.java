@@ -1,3 +1,4 @@
+package EmployeeWageComputation;
 
 interface ICompanyEmpWage
 {

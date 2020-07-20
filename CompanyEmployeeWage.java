@@ -1,3 +1,5 @@
+package EmployeeWageComputation;
+
 public class CompanyEmployeeWage
 {
 
